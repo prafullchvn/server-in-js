@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-const { parseRequest } = require('../src/server.js');
+const { parseRequest } = require('../src/requestParser.js');
 
 describe('headers', () => {
   it('Should return the parsed headers.', () => {

@@ -1,6 +1,5 @@
 # todo
 
-- [ ] Move the parser functions into separate file.
 - [ ] Consider creating entity for response.
 - [ ] Consider creating entity for router.
 - [ ] Consider creating entity for request handler.
@@ -11,6 +10,7 @@
 
 # done
 
+- [x] Move the parser functions into separate file.
 - [x] Extract routing function to it own file.
 - [x] ~~Extract request handler to its own file.~~
 - [x] Send the 'unknown' response to unknown url.

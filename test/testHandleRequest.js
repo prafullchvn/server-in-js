@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-const { router } = require('../src/server.js');
+const { router } = require('../src/router.js');
 
 describe('router', () => {
   it('Should write given response to the socket.', () => {

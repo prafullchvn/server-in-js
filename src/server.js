@@ -1,5 +1,7 @@
 const { createServer } = require('net');
 
+const { router } = require('./router.js');
+
 const parseRequestLine = requestLine => {
   const [method, uri, protocol] = requestLine.split(' ');
   return { method, uri, protocol };
@@ -33,28 +35,6 @@ const parseRequest = request => {
   return { ...requestLine, headers };
 };
 
-const getStatusMessage = (statusCode) => {
-  const statuses = {
-    200: 'OK',
-    404: 'Not Found'
-  };
-
-  return statuses[statusCode];
-};
-
-const response = (statusCode, data) => {
-  const statusMessage = getStatusMessage(statusCode);
-  return `HTTP/1.1 ${statusCode} ${statusMessage}\r\n\r\n${data}\r\n`;
-};
-
-const router = (headers, socket) => {
-  if (headers.uri === '/') {
-    socket.write(response(200, 'index'));
-    return;
-  }
-
-  socket.write(response(404, 'Not Found'));
-};
 
 const startServer = (port, requestHandler) => {
   const server = createServer(socket => {
@@ -69,4 +49,4 @@ const startServer = (port, requestHandler) => {
   server.listen(port, () => console.log(`Started listening on ${port}.`));
 };
 
-module.exports = { parseRequest, router, startServer };
+module.exports = { parseRequest, startServer };

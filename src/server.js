@@ -26,7 +26,6 @@ const parseHeaders = lines => {
 
 
 const parseRequest = request => {
-  console.log(request);
   const lines = request.split('\r\n');
   const requestLine = parseRequestLine(lines[0]);
   const headers = parseHeaders(lines.slice(1));

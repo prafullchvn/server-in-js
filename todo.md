@@ -1,8 +1,12 @@
 # todo
 
+- [ ] Move the parser functions into separate file.
 - [ ] Consider creating entity for response.
 - [ ] Consider creating entity for router.
 - [ ] Consider creating entity for request handler.
+- [ ] Extract URL handler functions in their separate file inside directory 'controller'.
+- [ ] Send html file content as response.
+- [ ] Move the router entity to separate directory.
 - [ ] Test functions used by parseRequest.
 
 # done

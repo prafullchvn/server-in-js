@@ -41,7 +41,7 @@ const startServer = (port, requestHandler) => {
     socket.setEncoding('utf8');
     socket.on('data', requestAsString => {
       const request = parseRequest(requestAsString);
-      requestHandler(request, socket)
+      router(request, socket)
       socket.end();
     });
   });

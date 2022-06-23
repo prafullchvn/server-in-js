@@ -1,8 +1,8 @@
 const assert = require('assert');
 
-const { handleRequest } = require('../src/server.js');
+const { router } = require('../src/server.js');
 
-describe('handleRequest', () => {
+describe('router', () => {
   it('Should write given response to the socket.', () => {
     const headers = { uri: '/' };
     const expectedResponse = 'HTTP/1.1 200 OK\r\n\r\nindex\r\n';
@@ -14,7 +14,7 @@ describe('handleRequest', () => {
       }
     };
 
-    handleRequest(headers, mockedSocket);
+    router(headers, mockedSocket);
     assert.deepEqual(actualResponse, expectedResponse);
   });
 
@@ -29,7 +29,7 @@ describe('handleRequest', () => {
       }
     };
 
-    handleRequest(headers, mockedSocket);
+    router(headers, mockedSocket);
     assert.deepEqual(actualResponse, expectedResponse);
   });
 });

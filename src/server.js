@@ -47,7 +47,7 @@ const response = (statusCode, data) => {
   return `HTTP/1.1 ${statusCode} ${statusMessage}\r\n\r\n${data}\r\n`;
 };
 
-const handleRequest = (headers, socket) => {
+const router = (headers, socket) => {
   if (headers.uri === '/') {
     socket.write(response(200, 'index'));
     return;
@@ -69,4 +69,4 @@ const startServer = (port, requestHandler) => {
   server.listen(port, () => console.log(`Started listening on ${port}.`));
 };
 
-module.exports = { parseRequest, handleRequest, startServer };
+module.exports = { parseRequest, router, startServer };

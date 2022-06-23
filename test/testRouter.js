@@ -1,6 +1,7 @@
 const assert = require('assert');
 
 const { router } = require('../src/router.js');
+const { Response } = require('../src/response.js');
 
 describe('router', () => {
   it('Should write given response to the socket.', () => {
@@ -11,10 +12,12 @@ describe('router', () => {
     const mockedSocket = {
       write: (data) => {
         actualResponse = data;
-      }
+      },
+      end: x => x
     };
 
-    router(headers, mockedSocket);
+    const response = new Response(mockedSocket);
+    router(headers, response);
     assert.deepEqual(actualResponse, expectedResponse);
   });
 
@@ -26,10 +29,13 @@ describe('router', () => {
     const mockedSocket = {
       write: (data) => {
         actualResponse = data;
-      }
+      },
+      end: x => x
     };
 
-    router(headers, mockedSocket);
+    const response = new Response(mockedSocket);
+    response.statusCode = 404;
+    router(headers, response);
     assert.deepEqual(actualResponse, expectedResponse);
   });
 });

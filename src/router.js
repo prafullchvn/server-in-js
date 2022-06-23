@@ -1,12 +1,10 @@
-const { response } = require('./response.js');
-
-const router = (headers, socket) => {
-  if (headers.uri === '/') {
-    socket.write(response(200, 'index'));
+const router = ({ uri }, response) => {
+  if (uri === '/') {
+    response.send('index');
     return;
   }
 
-  socket.write(response(404, 'Not Found'));
+  response.send('Not Found');
 };
 
 module.exports = { router };

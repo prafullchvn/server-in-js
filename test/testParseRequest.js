@@ -2,7 +2,7 @@ const assert = require('assert');
 
 const { parseRequest } = require('../src/requestParser.js');
 
-describe('headers', () => {
+describe('parseRequest', () => {
   it('Should return the parsed headers.', () => {
     const expected = {
       method: 'GET',

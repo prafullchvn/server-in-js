@@ -1,15 +1,15 @@
 # todo
 
-- [ ] Make use of response class inside router.
-- [ ] Consider creating entity for router.
 - [ ] Consider creating entity for request handler.
 - [ ] Extract URL handler functions in their separate file inside directory 'controller'.
 - [ ] Send html file content as response.
-- [ ] Move the router entity to separate directory.
 - [ ] Test functions used by parseRequest.
 
 # done
 
+- [x] Move the router entity to separate directory.
+- [x] Consider creating entity for router.
+- [x] Make use of response class inside router.
 - [x] Consider creating entity for response.
 - [x] Move the parser functions into separate file.
 - [x] Extract routing function to it own file.

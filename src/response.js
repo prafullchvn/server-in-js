@@ -20,7 +20,7 @@ class Response {
 
   send(data) {
     const statusMessage = getStatusMessage(this.#statusCode);
-    this.#socket.write(`HTTP/1.1 ${this.#statusCode} ${statusMessage}\r\n\r\n${data}\r\n`);
+    this.#socket.write(`HTTP/1.1 ${this.#statusCode} ${statusMessage}\r\n\r\n${data}`);
     this.#socket.end();
   }
 }
@@ -29,7 +29,7 @@ class Response {
 
 const response = (statusCode, data) => {
   const statusMessage = getStatusMessage(statusCode);
-  return `HTTP/1.1 ${statusCode} ${statusMessage}\r\n\r\n${data}\r\n`;
+  return `HTTP/1.1 ${statusCode} ${statusMessage}\r\n\r\n${data}`;
 };
 
 module.exports = { response, Response };

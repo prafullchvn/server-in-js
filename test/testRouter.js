@@ -1,41 +1,35 @@
 const assert = require('assert');
 
-const { router } = require('../src/router.js');
+const { Router } = require('../src/router/router.js');
 const { Response } = require('../src/response.js');
 
 describe('router', () => {
   it('Should write given response to the socket.', () => {
-    const headers = { uri: '/' };
-    const expectedResponse = 'HTTP/1.1 200 OK\r\n\r\nindex\r\n';
-    let actualResponse;
+    let calledHandler = false;
+    const dummyRequestHandler = () => {
+      calledHandler = true;
+    }
 
-    const mockedSocket = {
-      write: (data) => {
-        actualResponse = data;
-      },
-      end: x => x
-    };
+    const router = new Router();
+    router.addRoute('/', dummyRequestHandler);
+    router.routeTo({ uri: '/' });
 
-    const response = new Response(mockedSocket);
-    router(headers, response);
-    assert.deepEqual(actualResponse, expectedResponse);
+    assert.ok(calledHandler);
   });
 
   it('Should give the 404 response code when unknown url is passed.', () => {
-    const headers = { uri: '/unknownUrl' };
-    const expectedResponse = 'HTTP/1.1 404 Not Found\r\n\r\nNot Found\r\n';
-    let actualResponse;
+    const expectedResponse = 'HTTP/1.1 404 Not Found\r\n\r\nNot Found';
 
+    let actualResponse
     const mockedSocket = {
-      write: (data) => {
-        actualResponse = data;
-      },
+      write: (data) => actualResponse = data,
       end: x => x
     };
 
+    const router = new Router();
     const response = new Response(mockedSocket);
-    response.statusCode = 404;
-    router(headers, response);
+    router.routeTo({ uri: '/' }, response);
+
     assert.deepEqual(actualResponse, expectedResponse);
   });
 });

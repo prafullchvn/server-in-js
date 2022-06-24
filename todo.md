@@ -1,9 +1,13 @@
 # todo
 
+- [ ] Implement method called addHeader to add header to response.
+- [ ] Implement method to write all the headers.
+- [ ] Refactor send method of response entity.
+- [ ] Send html file content as response.
 - [ ] Consider creating entity for request handler.
 - [ ] Extract URL handler functions in their separate file inside directory 'controller'.
-- [ ] Send html file content as response.
 - [ ] Test functions used by parseRequest.
+- [ ] Install developer dependency 'nodemon'.
 
 # done
 

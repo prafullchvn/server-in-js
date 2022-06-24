@@ -11,6 +11,8 @@
 
 # done
 
+- [x] Merge connectionHandler back with starServer.
+- [x] Changed connectionHandler processRequest.
 - [x] Move the router entity to separate directory.
 - [x] Consider creating entity for router.
 - [x] Make use of response class inside router.
